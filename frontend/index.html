@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MusicGen Web Studio</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header>
+        <h1>MusicGen Web Studio</h1>
+        <p>Generate royalty-free music clips using Meta's MusicGen model.</p>
+      </header>
+
+      <section class="card">
+        <form id="music-form">
+          <label>
+            Text prompt
+            <textarea
+              name="prompt"
+              id="prompt"
+              placeholder="Describe the music you want..."
+              required
+            ></textarea>
+          </label>
+
+          <div class="grid">
+            <label>
+              Genre
+              <input type="text" name="genre" id="genre" value="hip-hop" required />
+            </label>
+            <label>
+              Mood
+              <input type="text" name="mood" id="mood" value="emotional" required />
+            </label>
+            <label>
+              Tempo
+              <select name="tempo" id="tempo">
+                <option value="slow">Slow</option>
+                <option value="medium" selected>Medium</option>
+                <option value="fast">Fast</option>
+              </select>
+            </label>
+            <label>
+              Duration (5-30s)
+              <input
+                type="number"
+                name="duration"
+                id="duration"
+                min="5"
+                max="30"
+                value="8"
+                required
+              />
+            </label>
+          </div>
+
+          <button type="submit" id="generate">Generate music</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <div class="status" id="status">Ready to generate.</div>
+        <audio id="player" controls></audio>
+        <a id="download" class="download" download="musicgen.wav">Download WAV</a>
+      </section>
+
+      <section class="card notes">
+        <h2>Tips for great prompts</h2>
+        <ul>
+          <li>Be specific about instruments and vibe.</li>
+          <li>Combine mood + genre + tempo for better results.</li>
+          <li>Start with 5-10 seconds for faster generation.</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
